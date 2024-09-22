@@ -2,7 +2,7 @@
  Project: Question answer from a uploaded document using streamlit for user interface, pinecone for generating embeddings and deepset-roberta-base-squad2 model for dealing with user question and generate answer the question.
 
 Just to quick check on app, you can use docker if you have an account:
-Run this code in your terminal<docker pull datasciencejordan/document_qa>
+Run this code in your terminal<docker pull datasciencejordan/document_qa> or <http://localhost:8501/>
 
 Or
  For installing dependencies, I recommend to create/open virtual environment locally on your desktop. Then follow steps below.
