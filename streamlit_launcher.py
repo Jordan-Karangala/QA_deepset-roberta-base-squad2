@@ -2,7 +2,7 @@ import streamlit as st
 import chunk_embed
 pc = chunk_embed.pc
 index_name = chunk_embed.index_name
-index = pc.Index('multilingual-e5-large')
+index = pc.Index('multilingual-e5-large')# Your free to use anyother embeddings models, multilingual-e5-large is used in this project 
 
 class Streamlit:
     def __init__(self):
