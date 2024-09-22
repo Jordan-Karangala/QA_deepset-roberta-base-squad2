@@ -1,7 +1,10 @@
 # document_qa_modules
  Project: Question answer from a uploaded document using streamlit for user interface, pinecone for generating embeddings and deepset-roberta-base-squad2 model for dealing with user question and generate answer the question.
 
+Just to quick check on app, you can use docker if you have an account:
+Run this code in your terminal<docker pull your_dockerhub_username/document_qa>
 
+Or
  For installing dependencies, I recommend to create/open virtual environment locally on your desktop. Then follow steps below.
 
  1. Clone the repository:
