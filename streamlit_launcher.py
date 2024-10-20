@@ -10,7 +10,7 @@ class Streamlit:
         st.title('Hello Streamlit!')
         st.write('This is a simple Streamlit app.')
         # Sidebar for file upload
-        st.sidebar.title("Upload PDF Files")
+        # st.sidebar.title("Upload PDF Files")
         st.write("Upload PDF files on the sidebar to analyze them.")
         return
 

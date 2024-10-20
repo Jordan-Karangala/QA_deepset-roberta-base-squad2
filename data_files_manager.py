@@ -1,5 +1,9 @@
 import os
 import shutil
+
+import docx
+from docx import Document
+import pandas as pd
 # import docx
 import pdfplumber
 import streamlit as st
@@ -17,16 +21,31 @@ class ManageData:
                 text += page.extract_text()
         return text
 
-    # # 2. Function to extract text from Word document
-    # def extract_text_from_docx(self,file_path):
-    #     doc = docx.Document(file_path)
-    #     return "\n".join([para.text for para in doc.paragraphs])
+    # 2. Function to extract text from Word document
+    def extract_text_from_docx(self,file_path):
+        try:
+            doc = Document(file_path)
+            content = []
+            for paragraph in doc.paragraphs:
+                content.append(paragraph.text)  # Append each paragraph's text
+            return "\n".join(content)  # Join paragraphs with newline characters
+        except Exception as e:
+            return f"Error reading DOCX file: {str(e)}"
+
+
 
     # 3. Function to extract text from a TXT file
     def extract_text_from_txt(self,file_path):
         with open(file_path, 'r') as file:
             return file.read()
 
+    def extract_text_from_csv(self, file_path):
+        try:
+            df = pd.read_csv(file_path)
+            # Perform operations on the DataFrame if needed
+            return df  # Return the DataFrame or perform specific tasks
+        except Exception as e:
+            return f"Error reading CSV file: {str(e)}"
     def move_files(self, src_directory, dest_directory):
         # Ensure the destination directory exists
         if not os.path.exists(dest_directory):
@@ -81,10 +100,14 @@ class ManageData:
             if file_type == 'pdf':
                 document_text = self.extract_text_from_pdf(file_path)
                 document_name = document_name
-            # elif file_type == 'docx':
-            #     document_text = self.extract_text_from_docx(file_path)
+            elif file_type == 'docx':
+                document_text = self.extract_text_from_docx(file_path)
+                document_name = document_name
             elif file_type == 'txt':
                 document_text = self.extract_text_from_txt(file_path)
+                document_name = document_name
+            elif file_type == 'csv':
+                document_text = self.extract_text_from_csv(file_path)
                 document_name = document_name
             return document_text, document_name
         else:
